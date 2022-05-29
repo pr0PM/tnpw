@@ -16,5 +16,5 @@ router.route("/").post(registerUser).get(protection, isAdmin, getUsers)
 router.post("/login", authUser)
 router.route("/profile").get(protection, getUserProfile).put(protection, updateUserProfile)
 router.route("/companies").get(protection, getCompanies)
-router.route("/jobboard").get(protection, getJobs)
+router.route("/jobboard").get(protection, getJobs).put(protection, updateUserProfile)
 export default router
