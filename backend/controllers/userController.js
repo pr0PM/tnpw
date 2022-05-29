@@ -164,41 +164,14 @@ const getJobs = asyncHandler(async (req, res) => {
 const updateUserJobsApplied = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id)
   if (user) {
-    user.firstName = req.body.firstName || user.firstName
-    user.lastName = req.body.lastName || user.lastName
-    user.email = req.body.email || user.email
-    user.rollNumber = req.body.rollNumber || user.rollNumber
-    user.fathersName = req.body.fathersName || user.fathersName
-    user.mothersName = req.body.mothersName || user.mothersName
-    user.dob = req.body.dob || user.dob
-    user.cgpa = req.body.cgpa || user.cgpa
-    user.tenthMarks = req.body.tenthMarks || user.tenthMarks
-    user.twelfthMarks = req.body.twelfthMarks || user.twelfthMarks
-    user.year = req.body.year || user.year
-    user.resumeLink = req.body.resumeLink || user.resumeLink
-    if (req.body.password) {
-      user.password = req.body.password
-    }
-    user.rollNumber = req.body.rollNumber || user.rollNumber
-    // const {} = req.body
+    user.appliedArray = req.body.appliedArray || user.appliedArray
     console.log(user)
-    const updatedUser = await user.save()
+    const updateUserJobsApplied = await user.save()
     res.status(201).json({
-      _id: updatedUser._id,
-      firstName: updatedUser.firstName,
-      lastName: updatedUser.lastName,
-      email: updatedUser.email,
-      rollNumber: updatedUser.rollNumber,
-      fathersName: updatedUser.fathersName,
-      mothersName: updatedUser.mothersName,
-      dob: updatedUser.dob,
-      cgpa: updatedUser.cgpa,
-      tenthMarks: updatedUser.tenthMarks,
-      twelfthMarks: updatedUser.twelfthMarks,
-      year: updatedUser.year,
-      resumeLink: updatedUser.resumeLink,
+      _id: updateUserJobsApplied._id,
+      appliedArray: updateUserJobsApplied.appliedArray,
       isAdmin: user.isAdmin,
-      token: generateToken(updatedUser._id),
+      token: generateToken(updateUserJobsApplied._id),
     })
   } else {
     res.status(404)
