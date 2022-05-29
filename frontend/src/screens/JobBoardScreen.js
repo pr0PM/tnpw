@@ -21,7 +21,6 @@ const listOfCompanies = [
 const JobBoardScreen = () => {
   const config = {
     headers: {
-      Authorization: `Bearer ${userInfo.token}`,
     },
   }
   const { data } = axios.get("/api/users/companies", config)

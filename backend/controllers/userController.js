@@ -148,4 +148,11 @@ const getCompanies = asyncHandler(async (req, res) => {
   const companies = await Job.find({})
   console.log(companies)
 })
-export { authUser, registerUser, getUserProfile, updateUserProfile, getUsers, getCompanies }
+
+const getJobs = asyncHandler(async (req, res) => {
+  const jobs = await JobDetails.find({})
+  console.log(jobs)
+  res.json(jobs)
+})
+
+export { authUser, registerUser, getUserProfile, updateUserProfile, getUsers, getCompanies, getJobs }
